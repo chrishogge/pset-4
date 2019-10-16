@@ -135,7 +135,7 @@ public class ProblemSet4 {
 				}
 			}
 
-			System.out.println("\n" + oddSum + "\n");
+			System.out.println("\n" + oddSum + ".\n");
 
     }
 
@@ -148,7 +148,26 @@ public class ProblemSet4 {
      */
 
     public void average() {
-
+	boolean continueLoop = true;
+    	int averageInt = 0;
+    	int sumInt = 0;
+    	int i = 0;
+    
+	while(continueLoop){
+          System.out.print("Non-negative integer: ");
+          int inputAverageInt = in.nextInt();
+          if(inputAverageInt >= 0){
+              averageInt = averageInt + inputAverageInt;
+      	      i = i +1;
+       	} else if(inputAverageInt < 0){
+		continueLoop = false;
+      		}
+    	}
+    
+  	if(i!=0){
+    	double averageDouble = ((double)averageInt) / ((double)i);
+    	System.out.print("\n" + String.format("%,.2f.\n",averageDouble));
+  	}
     }
 
     /*
