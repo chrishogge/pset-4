@@ -177,7 +177,26 @@ public class ProblemSet4 {
      */
 
     public void prime() {
+    int remainder = -1;
+    boolean isPrime = true;
+    boolean isNegative = true;
+    int inputPrime = -1;
+    while(isNegative){
+       System.out.print("\nNon-negative integer: ");
+       inputPrime = in.nextInt();
+       if(inputPrime >= 0){
+         isNegative = false;
+    }
+    }
+    for(int i=2; i<= (inputPrime/2); i++){
+      remainder = inputPrime%i;
+      if(remainder==0){
+        isPrime = false;
+        break;
+      }
+    }
 
+    System.out.print("\n" + isPrime);
     }
 
     /*
