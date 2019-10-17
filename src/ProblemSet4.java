@@ -207,7 +207,24 @@ public class ProblemSet4 {
      */
 
     public void fibonacci() {
-
+    System.out.print("\n");
+    long fibArray[] = new long[93];
+    fibArray[0] = 0;
+    fibArray[1] = 1;
+    boolean isNegative = true;
+    int fibLength = 0;
+    while(isNegative){
+       System.out.print("Positive integer: ");
+       fibLength = in.nextInt();
+       if((fibLength > 0) && (fibLength < 93)){
+         isNegative = false;
+      }
+    }
+  
+    for(int i = 2; i < fibLength+1; i++){
+      fibArray[i] = (fibArray[(i-2)] + fibArray[(i-1)]);
+    }
+    System.out.print("\n" + fibArray[fibLength] + ".\n");
     }
 
     /*
