@@ -18,6 +18,7 @@
 
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.ArrayList;
 
 public class ProblemSet4 {
 
@@ -32,8 +33,8 @@ public class ProblemSet4 {
         // ps.reverse();
         // ps.digits();
         // ps.average();
-        ps.prime();
-        ps.fibonacci();
+        // ps.prime();
+        // ps.fibonacci();
         ps.factors();
         ps.mario();
         ps.luigi();
@@ -238,8 +239,41 @@ public class ProblemSet4 {
      */
 
     public void factors() {
+    System.out.print("\nPositive integer: ");
+    double inputFactor = in.nextDouble();
+    ArrayList<Double> factorArray = new ArrayList<Double>();
+    int j = 0;
+
+    for(double i = 1; i <= inputFactor; i++){
+      if((inputFactor%i)==0){
+        if(factorArray.size() > 1 ){
+          if(i > factorArray.get((int)(j-1))){
+            factorArray.add(i);
+            factorArray.add((inputFactor/i));
+            j++;
+          }
+        }else if(i <= 1){
+          factorArray.add(i);
+          factorArray.add((inputFactor/i));
+          j++;
+        }
+    }
 
     }
+
+    String factors = "\n";
+
+    for(int z = 0; z < factorArray.size(); z++){
+      if(z != factorArray.size()-1){
+      factors += String.format("%.0f, ", factorArray.get(z));
+    }else if(z == factorArray.size()-1){
+      factors += String.format("%.0f.\n", factorArray.get(z));
+    }
+    }
+
+    System.out.print(factors);
+    }
+
 
     /*
      * Exercise 8.
