@@ -30,8 +30,8 @@ public class ProblemSet4 {
 
         // ps.sum();
         // ps.reverse();
-        ps.digits();
-        ps.average();
+        // ps.digits();
+        // ps.average();
         ps.prime();
         ps.fibonacci();
         ps.factors();
@@ -152,7 +152,7 @@ public class ProblemSet4 {
     	int averageInt = 0;
     	int sumInt = 0;
     	int i = 0;
-    
+
 	while(continueLoop){
           System.out.print("Non-negative integer: ");
           int inputAverageInt = in.nextInt();
@@ -163,7 +163,7 @@ public class ProblemSet4 {
 		continueLoop = false;
       		}
     	}
-    
+
   	if(i!=0){
     	double averageDouble = ((double)averageInt) / ((double)i);
     	System.out.print("\n" + String.format("%,.2f.\n",averageDouble));
@@ -196,7 +196,11 @@ public class ProblemSet4 {
       }
     }
 
-    System.out.print("\n" + isPrime);
+    if(isPrime){
+      System.out.print("\nPrime.\n");
+    }else if(!(isPrime)){
+      System.out.print("\nNot prime.\n");
+    }
     }
 
     /*
@@ -220,11 +224,11 @@ public class ProblemSet4 {
          isNegative = false;
       }
     }
-  
+
     for(int i = 2; i < fibLength+1; i++){
       fibArray[i] = (fibArray[(i-2)] + fibArray[(i-1)]);
     }
-    System.out.print("\n" + fibArray[fibLength] + ".\n");
+    System.out.print("\n" + fibArray[fibLength] + ".\n\n");
     }
 
     /*
