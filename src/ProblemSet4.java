@@ -243,23 +243,28 @@ public class ProblemSet4 {
     double inputFactor = in.nextDouble();
     ArrayList<Double> factorArray = new ArrayList<Double>();
     int j = 0;
+    boolean noDuplicates = true;
 
     for(double i = 1; i <= inputFactor; i++){
       if((inputFactor%i)==0){
         if(factorArray.size() > 1 ){
-          if(i > factorArray.get((int)(j-1))){
+          for(int x = 0; x < factorArray.size(); x++){
+            if(i == factorArray.get(x)){
+              noDuplicates = false;
+             }
+            }
+          }
+          if(noDuplicates){
             factorArray.add(i);
             factorArray.add((inputFactor/i));
-            j++;
           }
-        }else if(i <= 1){
+        }else if(i == 1){
           factorArray.add(i);
           factorArray.add((inputFactor/i));
           j++;
         }
     }
 
-    }
 
     String factors = "\n";
 
