@@ -35,7 +35,7 @@ public class ProblemSet4 {
         // ps.average();
         // ps.prime();
         // ps.fibonacci();
-        ps.factors();
+        // ps.factors();
         ps.mario();
         ps.luigi();
         ps.credit();
@@ -239,8 +239,16 @@ public class ProblemSet4 {
      */
 
     public void factors() {
-    System.out.print("\nPositive integer: ");
-    double inputFactor = in.nextDouble();
+      boolean isNegative = true;
+      double inputFactor = 0;
+      while(isNegative){
+         System.out.print("\nPositive integer: ");
+         inputFactor = in.nextDouble();
+         if(inputFactor > 0){
+           isNegative = false;
+        }
+      }
+
     ArrayList<Double> factorArray = new ArrayList<Double>();
     int j = 0;
     boolean noDuplicates = true;
@@ -272,7 +280,7 @@ public class ProblemSet4 {
       if(z != factorArray.size()-1){
       factors += String.format("%.0f, ", factorArray.get(z));
     }else if(z == factorArray.size()-1){
-      factors += String.format("%.0f.\n", factorArray.get(z));
+      factors += String.format("%.0f.\n\n", factorArray.get(z));
     }
     }
 
@@ -288,7 +296,34 @@ public class ProblemSet4 {
      */
 
     public void mario() {
+      System.out.print("\n");
+      String workingString = "";
+      int currentRow = 1;
+      int numberSpaces;
+      int inputHeight = 0;
+      boolean isHeightLimit = true;
+      while(isHeightLimit){
+        System.out.print("Height: ");
+        inputHeight = in.nextInt();
+        if((inputHeight < 25) && (inputHeight > 0)){
+          isHeightLimit = false;
+        }
+      }
 
+      for(int i = 0; i < inputHeight; i ++){
+        workingString = "";
+        currentRow = i+1;
+        numberSpaces = inputHeight - (currentRow);
+        for(int k = 0; k < numberSpaces; k++){
+          workingString += " ";
+        }
+          workingString += "#";
+        for(int j = currentRow; j > 0; j--){
+          workingString += "#";
+        }
+        System.out.print("\n" + workingString);
+      }
+      System.out.print("\n");
     }
 
     /*
