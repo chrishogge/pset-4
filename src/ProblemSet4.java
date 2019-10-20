@@ -37,7 +37,7 @@ public class ProblemSet4 {
         // ps.fibonacci();
         // ps.factors();
         // ps.mario();
-        ps.luigi();
+        // ps.luigi();
         ps.credit();
 
         in.close();
@@ -379,6 +379,58 @@ public class ProblemSet4 {
      */
 
     public void credit() {
+
+      System.out.print("\nNumber: ");
+      long inputCard = in.nextLong();
+      int cardLength = String.valueOf(inputCard).length();
+      int cardArray[] = new int[cardLength];
+      int oddCardArray[] = new int[(cardLength/2)];
+      int evenCardArray[] = new int[(cardLength/2)+1];
+      String firstTwoDigits = (Long.toString(inputCard)).substring(0,2);
+
+      for(int i = 0; i < cardLength; i++){
+        cardArray[i] = Integer.valueOf((Long.toString(inputCard)).substring(i,i+1));
+      }
+      int k = 0;
+      for(int j = 1; j < cardLength; j+=2){
+        oddCardArray[k] = cardArray[j];
+        k++;
+      }
+
+      k = 0;
+
+      System.out.print("\nEven Array:");
+      for(int j = 0; j < cardLength; j+=2){
+        System.out.print("\nIndex: " + j + " Element: " + cardArray[j]);
+        evenCardArray[k] = cardArray[j];
+        k++;
+      }
+
+      int oddMultiSum = 0;
+      int workingNumber = 0;
+
+      for(int l = 0; l < (cardLength/2); l++){
+        workingNumber = (2*oddCardArray[l])%10;
+        oddMultiSum += workingNumber;
+        workingNumber = ((2*oddCardArray[l])/10)%10;
+        oddMultiSum += workingNumber;
+      }
+
+      int oddEvenSum = oddMultiSum;
+
+      for(int m = 0; m < (cardLength/2)+1; m++){
+        oddEvenSum += evenCardArray[m];
+      }
+
+      System.out.println("total sum: " + oddEvenSum);
+
+      String lastDigit = (Integer.toString(oddEvenSum)).substring(1,2);
+      System.out.println("\nLast Digit: " + lastDigit);
+
+      if((lastDigit.equals("0") && (firstTwoDigits.equals("34") || firstTwoDigits.equals("37"))) && cardLength == 15){
+        System.out.println("\nValid");
+      }
+
 
     }
 }
