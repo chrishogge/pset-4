@@ -29,15 +29,15 @@ public class ProblemSet4 {
 
         // comment out or uncomment as needed
 
-        // ps.sum();
-        // ps.reverse();
-        // ps.digits();
-        // ps.average();
-        // ps.prime();
-        // ps.fibonacci();
-        // ps.factors();
-        // ps.mario();
-        // ps.luigi();
+        ps.sum();
+        ps.reverse();
+        ps.digits();
+        ps.average();
+        ps.prime();
+        ps.fibonacci();
+        ps.factors();
+        ps.mario();
+        ps.luigi();
         ps.credit();
 
         in.close();
@@ -229,7 +229,7 @@ public class ProblemSet4 {
     for(int i = 2; i < fibLength+1; i++){
       fibArray[i] = (fibArray[(i-2)] + fibArray[(i-1)]);
     }
-    System.out.print("\n" + fibArray[fibLength] + ".\n\n");
+    System.out.print("\n" + fibArray[fibLength] + ".\n");
     }
 
     /*
@@ -280,7 +280,7 @@ public class ProblemSet4 {
       if(z != factorArray.size()-1){
       factors += String.format("%.0f, ", factorArray.get(z));
     }else if(z == factorArray.size()-1){
-      factors += String.format("%.0f.\n\n", factorArray.get(z));
+      factors += String.format("%.0f.\n", factorArray.get(z));
     }
     }
 
@@ -387,24 +387,38 @@ public class ProblemSet4 {
       int oddCardArray[] = new int[(cardLength/2)];
       int evenCardArray[] = new int[(cardLength/2)+1];
       String firstTwoDigits = (Long.toString(inputCard)).substring(0,2);
+      String firstDigit = (Long.toString(inputCard)).substring(0,1);
 
       for(int i = 0; i < cardLength; i++){
         cardArray[i] = Integer.valueOf((Long.toString(inputCard)).substring(i,i+1));
       }
       int k = 0;
+
+      if((cardLength % 2) != 0){
       for(int j = 1; j < cardLength; j+=2){
         oddCardArray[k] = cardArray[j];
         k++;
       }
+    }else if((cardLength % 2) == 0){
+      for(int j = cardLength-2; j > -1; j-=2){
+        oddCardArray[k] = cardArray[j];
+        k++;
+      }
+    }
 
       k = 0;
 
-      System.out.print("\nEven Array:");
+      if((cardLength % 2) != 0){
       for(int j = 0; j < cardLength; j+=2){
-        System.out.print("\nIndex: " + j + " Element: " + cardArray[j]);
         evenCardArray[k] = cardArray[j];
         k++;
       }
+    }else if((cardLength % 2) == 0){
+      for(int j = 1; j < cardLength; j+=2){
+        evenCardArray[k] = cardArray[j];
+        k++;
+      }
+    }
 
       int oddMultiSum = 0;
       int workingNumber = 0;
@@ -417,18 +431,20 @@ public class ProblemSet4 {
       }
 
       int oddEvenSum = oddMultiSum;
-
       for(int m = 0; m < (cardLength/2)+1; m++){
         oddEvenSum += evenCardArray[m];
       }
 
-      System.out.println("total sum: " + oddEvenSum);
-
       String lastDigit = (Integer.toString(oddEvenSum)).substring(1,2);
-      System.out.println("\nLast Digit: " + lastDigit);
 
       if((lastDigit.equals("0") && (firstTwoDigits.equals("34") || firstTwoDigits.equals("37"))) && cardLength == 15){
-        System.out.println("\nValid");
+        System.out.println("\nAmex.\n");
+      }else if(((lastDigit.equals("0")) && (firstTwoDigits.equals("51") || firstTwoDigits.equals("52") || firstTwoDigits.equals("53") || firstTwoDigits.equals("54") || firstTwoDigits.equals("55"))) && cardLength == 16){
+        System.out.print("\nMastercard.\n");
+      }else if(((lastDigit.equals("0")) && (firstDigit.equals("4")) && (cardLength == 13 || cardLength == 16))){
+        System.out.print("\nVisa.\n");
+      }else{
+        System.out.print("\nInvalid.\n");
       }
 
 
